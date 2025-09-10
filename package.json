@@ -5,7 +5,8 @@
 	"main": "src/server.js",
 	"type": "module",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1",
+		"test": "vitest",
+		"test:coverage": "vitest run --coverage",
 		"start": "node .",
 		"dev": "nodemon . --ignore 'src/assets/js/*.js' --ignore 'cypress/**/*.js' --ignore 'test/**/*.js'",
 		"css": "npx tailwindcss -i ./src/tailwind.css -o ./src/assets/css/index.css --watch",
@@ -57,5 +58,15 @@
 		"supertest": "^6.3.3",
 		"tailwindcss": "^3.1.8",
 		"vitest": "^3.0.7"
+	},
+	"vitest": {
+		"include": [
+			"src/assets/js/__tests__/**/*.test.js"
+		],
+		"environment": "node",
+		"globals": true,
+		"transformMode": {
+			"web": [".js", ".jsx"]
+		}
 	}
 }
